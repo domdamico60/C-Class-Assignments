@@ -1,0 +1,125 @@
+//<File name> -- brief statement as to the file’s purpose
+//CSIS 111-<B01> ADD YOUR SECTION NUMBER
+//<Sources if necessary>
+//Include statements
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <iomanip>
+using namespace std;
+//Global declarations: Constants and type definitions only -- no variables
+//Function prototypes
+int main()
+{
+	//In cout statement below SUBSTITUTE your name and lab number
+	cout << "Dominic D'Amico -- Lab 4"<<endl<<endl;
+	int songMinutes = 0;
+	int songSeconds = 0;
+	int timeSeconds = 0;
+	int totalMinutes = 0;
+	int totalSeconds = 0;
+	int minutesLeft = 0;
+	int secondsLeft = 0;
+	int totalTime = 0;
+	int usedTime = 0;
+	int current = 0;
+	int currentMinutes = 0;
+	int currentSeconds = 0;
+	int usedMinutes;
+	int usedSeconds;
+	int seconds = 0;
+	int newtotalTime = 0;
+	int songNumber;
+	bool ok = true;
+	ifstream inData;
+	inData.open("c:\\songs.txt");
+	if (!inData)
+	{
+		cout << "Can't open the input file. Cancelling." << endl;
+		cin.get();
+		return 1;
+	}
+
+	songNumber = 1; //First record
+	//Create columns and heading
+
+	cout << setw(8) << "Song" << setw(28)
+		<< "Song Time" << setw(28)
+		<< "Total Time" << setw(25)
+		<< "Number" << setw(20)
+		<< "Minutes" << setw(10)
+		<< "Seconds" << setw(18)
+		<< "Minutes" << setw(10)
+		<< "Seconds" << setw(22)
+		<< "-------" << setw(20) << "-------" << setw(10)
+		<< "-------" << setw(18) << "-------" << setw(10)
+		<< "-------" << endl;
+	/*
+	cout << fixed << showpoint << setprecision(2) << setw(7)
+	<< songNumber << setw(18)
+	<< songMinutes << setw(10)
+	<< timeSeconds << setw(18)
+	<< totalMinutes << setw(10)
+	<< totalSeconds << setw(15)
+	<< endl;
+	*/
+	inData >> totalTime;
+
+	// songNumber = 2;
+	songNumber = 1;
+	while (songNumber <= 14) //Loop until current complete
+	{
+		inData >> current;
+		// if (currentSeconds > 59)
+		if (current > 59)
+		{
+			currentMinutes = (current / 60);
+			currentSeconds = (current % 60);
+		}
+		timeSeconds = currentSeconds;
+		songMinutes = currentMinutes;
+		seconds = (songMinutes * 60);
+		usedMinutes = 0;
+		usedSeconds = 0;
+		/*
+		if (currentSeconds > 59)
+		{
+		currentMinutes = (current / 60);
+		currentSeconds = (current % 60);
+		}
+		*/
+		totalMinutes = (usedMinutes + currentMinutes);
+		totalSeconds = (usedSeconds + currentSeconds);
+
+		cout << fixed << showpoint << setprecision(2) << setw(7)
+			<< songNumber << setw(18)
+			<< songMinutes << setw(10)
+			<< timeSeconds << setw(18)
+			<< totalMinutes << setw(10)
+			<< totalSeconds << setw(15) << endl;
+
+		usedTime = (totalMinutes * 60 + totalSeconds);
+		minutesLeft = (totalTime - usedTime) / 60;
+		// secondsLeft = (totalTime - minutesLeft) % 60;
+		secondsLeft = (totalTime - usedTime) % 60;
+
+		songNumber++;
+	}
+	//Calculates the time on the cd, time used,
+	//and the time left on the cd
+	totalTime = (80 * 60);
+	//Output the minutes and seconds left on the CD
+	cout << "There are " << minutesLeft << " minutes and "
+		<< secondsLeft
+		<< " seconds left of space on the 80 minute CD." << endl;
+	//Variable declarations
+	//Program logic
+	//Closing program statements
+	inData.close();
+	cin.get();
+	cin.get();
+	return 0;
+	system("pause");
+	return 0;
+}
+//Function definitions
