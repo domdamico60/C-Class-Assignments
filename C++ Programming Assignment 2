@@ -1,0 +1,52 @@
+//<File name> -- brief statement as to the file’s purpose
+//CSIS 111-<Section Number> ADD YOUR SECTION NUMBER
+//<Sources if necessary>
+//Include statements
+#include <iostream>
+#include <string>
+#include<cmath>
+using namespace std;
+//Global declarations: Constants and type definitions only -- no variables
+//Function prototypes
+int main()
+{ //In cout statement below SUBSTITUTE your name and lab number
+	cout << "Dominic D'Amico -- Lab 2" << endl << endl;
+	//Variable declarations
+	double permutation, n, r, num;
+	double rfact;
+	//prompt and read the number of items
+	cout << "Enter number of items:";
+	cin >> n;
+	//prompt and read the number of items taken
+	cout << "Enter number of items taken at a time:";
+	cin >> r;
+	//compute the n!
+	num = n;
+	int nfact = 1;
+	while (num > 0)
+	{
+		rfact = rfact * (num);
+		num--;
+	}
+	//compute the (n-r)!
+	num = n - r;
+	int n_rfact = 1;
+	while (num > 0)
+	{
+		n_rfact=n_rfact * num;
+		num--;
+	}
+	//compute the total permutation value
+	permutation = nfact / (rfact * n_rfact);
+	//Displaying computed value
+	cout << "Total number of permutations:"
+	<< permutation << endl;
+	//Program logic
+	//Closing program statements
+	system("pause");
+	return 0;
+
+	//Function definitions
+
+}
+
