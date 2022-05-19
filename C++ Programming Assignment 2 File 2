@@ -1,0 +1,111 @@
+//<File name> -- brief statement as to the file’s purpose
+//CSIS 111-<Section Number> ADD YOUR SECTION NUMBER
+//<Sources if necessary>
+//Include statements
+#include <iostream>
+#include <string>
+using namespace std;
+//Global declarations: Constants and type definitions only -- no variables
+//Function prototypes
+int main()
+{
+	//In cout statement below SUBSTITUTE your name and lab number
+	cout << "Dominic D'Amico -- Lab 2" << endl << endl;
+	//Variable declarations
+	//Program logic
+	//Closing program statements
+	system("pause");
+	return 0;
+	//declare the required variables of type double
+
+
+
+	double num_permutation, n, r, number;
+
+
+
+	double nfactorial = 1, rfactorial = 1, nfactorial_rfactorial = 1;
+
+
+
+	cout << "Enter the number/set of items(n):";
+
+
+
+	cin >> n;//get the input from the user for n
+
+
+
+	cout << "Enter the number of items taken at a time(r):";
+
+
+
+	cin >> r;//get the input from the user for r
+
+
+
+	number = n;
+
+
+
+	//execute the while loop till number is greater than 0
+
+
+
+	while (number > 0)
+
+
+
+	{
+
+
+
+		nfactorial = nfactorial * (number);
+
+
+
+		number--;
+
+
+
+	}
+
+
+
+	number = r;
+
+
+
+	//execute the while loop till number is greater than 0
+
+
+
+	while (number > 0)
+
+
+
+	{
+
+
+
+		rfactorial = rfactorial * (number);
+		number--;
+	}
+	number = n - r;
+	//execute the while loop till number is greater than 0
+	while (number > 0)
+	{
+		nfactorial_rfactorial = nfactorial_rfactorial * number;
+		number--;
+	}
+	//calculate the total number of permetations
+
+	num_permutation = nfactorial / (rfactorial * nfactorial_rfactorial);
+	//print statement to display the total number of permetations on the console
+	cout << "The total number of permutations are:" << num_permutation << endl;
+	return 0;
+}
+//end of the main()function
+
+}
+//Function definitions
