@@ -1,0 +1,68 @@
+//<File name> -- brief statement as to the file’s purpose
+//CSIS 111-<B01>
+//<Sources if necessary>
+//Include statements
+#include <iostream>
+#include <fstream>
+#include <iomanip>
+#include <string>
+#include <cmath>
+using namespace std;
+//Global declarations: Constants and type definitions only -- no variables
+//Function prototypes
+int main()
+{
+	//In cout statement below SUBSTITUTE your name and lab number
+	cout << "Dominic D'Amico -- Lab 3" << endl << endl;
+	//Variable declarations
+	string fileName;
+	string lastName;
+	double score;
+	double total;
+	double grade;
+	string description;
+	//Program logic
+	cout << "Enter the input file name: ";
+	cin >> fileName;
+	// open the input file
+	ifstream infile;
+	infile.open(fileName);
+	// exit from the program if the input file does not opem
+	if (!infile)
+	{
+		cout << fileName << " file cannot be opened!" << endl;
+		exit(1);
+	}
+	// repeat the loop for all students in the file
+	infile >> lastName;
+	while (infile)
+	{
+		infile >> score;
+		infile >> total;
+		// compute the grade
+		grade = score / total * 100;
+		//find the grade's description
+		if (grade > 90)
+			description = "Excellent";
+		else if (grade > 80)
+			description = "Well Done";
+		else if (grade > 70)
+			description = "Good";
+		else if (grade > 60)
+			description = "Need Improvement";
+		else
+			description = "Fail";
+		// display the result of each student
+		cout << lastName << " "
+			<< setprecision(0) << fixed << round(grade) << "%"
+			<< setprecision(5) << fixed << (grade * 0.01) << " "
+			<< description << endl;;
+		infile >> lastName;
+	}
+	//Closing program statements
+	infile.close();
+
+	system("pause");
+	return 0;
+}
+//Function definitions
