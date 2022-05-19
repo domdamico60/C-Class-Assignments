@@ -1,0 +1,92 @@
+//<Dominic_D'Amico_Lab5> -- brief statement as to the file’s purpose
+//CSIS 111-<B01> ADD YOUR SECTION NUMBER
+//<Sources if necessary>
+//Include statements
+#include <iostream>
+#include <string>
+#include <cmath>
+#include <fstream>
+#include <iomanip>
+using namespace std;
+//Global declarations: Constants and type definitions only -- no variables
+void LastName(string LastName);
+void Average(float GradeScore, float TotalPoints);
+//Function prototypes
+int main()
+{
+	//In cout statement below SUBSTITUTE your name and lab number
+	cout << "Dominic D'Amico -- Lab 5" << endl << endl;
+	//Variable declarations
+	string Lastname;
+	float grade1;
+	float grade2;
+	ifstream myFile;
+	//Program logic
+
+		// open file
+
+		myFile.open("input"); //In my PC, file is saved with the name "input". If you use another file name, just change this line
+
+		if (myFile.is_open()) {
+
+			while (myFile >> Lastname >> grade1 >> grade2)//while there is data in the file
+
+			{
+
+				LastName(Lastname); // Calling the function to print the last name
+
+				Average(grade1, grade2); //calling the Average function which calculates the grade and prints the appropriate comment
+
+			}
+		}
+
+		return 0;
+
+	}
+
+	/**function to print just the last name*/
+
+	void LastName(string LastName) {
+
+		cout << LastName << " ";
+
+		return;
+
+	}
+
+	void Average(float GradeScore, float TotalPoints) //This function prints the percentage and it's corresponding comment(good,excellent etc)
+
+	{
+		float GradePercentage = GradeScore/TotalPoints;
+		int percent = ceil((GradePercentage*100)-0.50);
+
+		cout << percent << "% ";
+
+		cout << fixed << setprecision(5);
+
+		cout << GradePercentage << " ";
+
+		if (percent > 90)
+
+			cout << "Excellent" << endl; //printing appropriate comment if percentage > 90
+
+		else if (percent > 80)
+
+			cout << "Well Done" << endl;
+
+		else if (percent > 70)
+
+			cout << "Good" << endl;
+
+		else if (percent >= 60)
+
+			cout << "Need Improvement" << endl;
+
+		else if (percent < 50)
+
+			cout << "Fail" << endl;
+	//Closing program statements
+	system("pause");
+	return;
+}
+//Function definitions
